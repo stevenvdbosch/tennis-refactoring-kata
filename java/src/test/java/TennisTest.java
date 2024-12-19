@@ -3,6 +3,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class TennisTest {
@@ -80,6 +82,14 @@ public class TennisTest {
     public void checkAllScoresTennisGame3(int player1Points, int player2Points, String expectedScore) {
         TennisGame game = new TennisGame3("player1", "player2");
         checkAllScores(player1Points, player2Points, expectedScore, game);
+    }
+
+    @Test
+    public void testWhenUsingANonExistingPlayerNameThenIllegalArgumentException() {
+        TennisGame game = new TennisGame3("player1", "player2");
+        assertThrows(IllegalArgumentException.class, () -> {
+            game.wonPoint("nonExistingPlayer");
+        });
     }
 
     @ParameterizedTest

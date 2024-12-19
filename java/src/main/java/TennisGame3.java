@@ -26,11 +26,20 @@ public class TennisGame3 implements TennisGame {
     }
     
     public void wonPoint(String playerName) {
-        if ("player1".equals(playerName))
+        if (!isExistingPlayer(playerName)) {
+            throw new IllegalArgumentException("Invalid player name");
+        }
+
+        if (player1Name.equals(playerName)) {
             this.p1 += 1;
-        else
+        } else {
             this.p2 += 1;
-        
+        }
+
+    }
+
+    private boolean isExistingPlayer(String playerName) {
+        return player1Name.equals(playerName) || player2Name.equals(playerName);
     }
 
 }

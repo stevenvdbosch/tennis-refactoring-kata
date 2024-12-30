@@ -22,7 +22,7 @@ public class TennisGame3 implements TennisGame {
         }
 
         String playerName = player1Score > player2Score ? player1Name : player2Name;
-        return ((player1Score - player2Score)*(player1Score - player2Score) == 1) ? "Advantage " + playerName : "Win for " + playerName;
+        return isOnePointDifference() ? "Advantage " + playerName : "Win for " + playerName;
     }
 
     public void wonPoint(String playerName) {
@@ -35,7 +35,10 @@ public class TennisGame3 implements TennisGame {
         } else {
             player2Score += 1;
         }
+    }
 
+    private boolean isOnePointDifference() {
+        return (player1Score - player2Score) * (player1Score - player2Score) == 1;
     }
 
     private boolean isExistingPlayer(String playerName) {

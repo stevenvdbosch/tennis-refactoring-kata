@@ -31,9 +31,9 @@ public class TennisGame3 implements TennisGame {
         }
 
         if (player1Name.equals(playerName)) {
-            player1Score += 1;
+            player1Score++;
         } else {
-            player2Score += 1;
+            player2Score++;
         }
     }
 
